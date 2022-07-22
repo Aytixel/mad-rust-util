@@ -3,9 +3,7 @@ use std::path::Path;
 use std::sync::mpsc::{channel, Receiver};
 
 use dirs::config_dir;
-use notify::{
-    DebouncedEvent, ReadDirectoryChangesWatcher, RecommendedWatcher, RecursiveMode, Watcher,
-};
+use notify::{DebouncedEvent, RecommendedWatcher, RecursiveMode, Watcher};
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 
@@ -15,7 +13,7 @@ pub struct ConfigManager<T: DeserializeOwned + Serialize + Default> {
     pub folder: Box<Path>,
     pub path: Box<Path>,
     pub config: T,
-    watcher: ReadDirectoryChangesWatcher,
+    watcher: RecommendedWatcher,
     watcher_output_rx: Receiver<DebouncedEvent>,
 }
 
