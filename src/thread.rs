@@ -81,7 +81,9 @@ pub fn kill_double() -> bool {
             sys.refresh_processes_specifics(ProcessRefreshKind::new());
 
             for (process_pid, process) in sys.processes() {
-                if process.exe() == path && pid != *process_pid {
+                let cmd = process.cmd();
+
+                if !cmd.is_empty() && cmd[0] == path.to_string_lossy() && pid != *process_pid {
                     return true;
                 }
             }

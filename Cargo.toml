@@ -15,5 +15,4 @@ hashbrown = "0.13.1"
 notify = "4.0.17"
 barrage = "0.2.3"
 tokio = { version = "1.23.0", features = ["full"] }
-futures = "0.3.25"
 libc = "0.2.139"

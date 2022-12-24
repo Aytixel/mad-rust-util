@@ -82,10 +82,10 @@ pub mod server {
     use crate::connection::MAX_PACKET_SIZE;
     use crate::thread::DualChannel;
 
-    use futures::lock::Mutex;
     use hashbrown::HashMap;
     use tokio::net::UdpSocket;
     use tokio::spawn;
+    use tokio::sync::Mutex;
     use tokio::time::{interval, sleep, Instant};
 
     struct Client {
@@ -277,10 +277,9 @@ pub mod client {
     use crate::thread::DualChannel;
     use crate::time::TIMEOUT_1S;
 
-    use futures::lock::Mutex;
     use tokio::net::UdpSocket;
     use tokio::spawn;
-    use tokio::sync::Notify;
+    use tokio::sync::{Notify, Mutex};
     use tokio::time::{interval, sleep, Instant, MissedTickBehavior};
 
     pub struct Client {
